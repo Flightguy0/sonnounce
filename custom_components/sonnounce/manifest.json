@@ -18,7 +18,7 @@
   "issue_tracker": "https://github.com/Flightguy0/sonnounce/issues",
   "requirements": [],
   "single_config_entry": true,
-  "version": "2.2.0",
+  "version": "2.2.1",
   "zeroconf": [
     "_sonos._tcp.local."
   ]

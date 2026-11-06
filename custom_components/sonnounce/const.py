@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "sonnounce"
-VERSION = "2.2.0"
+VERSION = "2.2.1"
 
 # Indstillinger, sat under Konfigurer på integrationen.
 CONF_ARCHIVE_ENABLED = "archive_enabled"
