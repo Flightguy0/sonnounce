@@ -1,0 +1,16 @@
+{
+  "domain": "sonnounce",
+  "name": "Sonnounce",
+  "after_dependencies": ["cloud", "zeroconf"],
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["http"],
+  "documentation": "https://flyveradio.dk/sonnounce/",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://flyveradio.dk/sonnounce/",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "2.2.0",
+  "zeroconf": ["_sonos._tcp.local."]
+}

@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce membolehkan app Sonnounce pada telefon atau Mac anda menghantar pengumuman suara ke pembesar suara Sonos anda melalui Home Assistant apabila anda tiada di rumah. Tiada apa-apa yang perlu diisi: pembesar suara dijumpai secara automatik.\n\nSelepas itu, buka app Sonnounce semasa anda di rumah, pada Wi-Fi yang sama. Ia menjumpai Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tiada log masuk diperlukan."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Pembesar suara Sonos dijumpai pada rangkaian anda. Adakah anda mahu menyediakan Sonnounce, supaya app Sonnounce boleh menghantar pengumuman kepadanya melalui Home Assistant apabila anda tiada di rumah?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce sudah disediakan."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Seting Sonnounce",
+        "data": {
+          "archive_enabled": "Simpan pengumuman",
+          "archive_days": "Tempoh simpanan pengumuman (hari)",
+          "speaker_host": "Alamat satu pembesar suara",
+          "reset_key": "Lupakan semua telefon dan komputer"
+        },
+        "data_description": {
+          "archive_enabled": "Setiap pengumuman yang dihantar melalui app disimpan dalam Home Assistant sehingga anda memuat turunnya daripada app Sonnounce pada telefon atau Mac anda. Pengumuman yang telah dimuat turun dipadam daripada Home Assistant.",
+          "archive_days": "0 bermaksud ia disimpan sehingga dimuat turun.",
+          "speaker_host": "Hanya diperlukan jika Home Assistant dan pembesar suara berada pada rangkaian yang berasingan. Masukkan alamat IP salah satu pembesar suara, contohnya 192.168.1.20.",
+          "reset_key": "Membuat kunci baharu. Setiap telefon dan komputer perlu menambah Home Assistant ini semula dalam app Sonnounce, di rumah, pada Wi-Fi yang sama. Gunakan ini jika anda kehilangan telefon."
+        }
+      }
+    }
+  }
+}

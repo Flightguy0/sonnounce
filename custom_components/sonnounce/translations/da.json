@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Med Sonnounce kan Sonnounce-appen på din telefon eller Mac sende talebeskeder til dine Sonos-højttalere gennem Home Assistant, når du ikke er hjemme. Der er ikke noget at udfylde: højttalerne findes automatisk.\n\nÅbn bagefter Sonnounce-appen, mens du er hjemme på samme wifi. Den finder selv denne Home Assistant og tilbyder at tilføje den. Der skal ikke logges ind."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Der er fundet Sonos-højttalere på dit netværk. Vil du sætte Sonnounce op, så Sonnounce-appen kan sende beskeder til dem gennem Home Assistant, når du ikke er hjemme?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce er allerede sat op."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Indstillinger for Sonnounce",
+        "data": {
+          "archive_enabled": "Gem beskeder",
+          "archive_days": "Gem beskederne i så mange dage",
+          "speaker_host": "Adresse på en højttaler",
+          "reset_key": "Glem alle telefoner og computere"
+        },
+        "data_description": {
+          "archive_enabled": "Hver besked, der sendes med appen, gemmes i Home Assistant, indtil du henter den med Sonnounce-appen på telefonen eller Mac'en. Hentede beskeder slettes fra Home Assistant.",
+          "archive_days": "0 betyder, at de gemmes, indtil de bliver hentet.",
+          "speaker_host": "Kun nødvendig, hvis Home Assistant og højttalerne står på hvert sit netværk. Skriv IP-adressen på én af højttalerne, for eksempel 192.168.1.20.",
+          "reset_key": "Laver en ny nøgle. Alle telefoner og computere skal tilføje denne Home Assistant igen i Sonnounce-appen, hjemme på samme wifi. Brug det, hvis du mister en telefon."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce permet à l’app Sonnounce de votre téléphone ou de votre Mac d’envoyer des annonces vocales à vos enceintes Sonos via Home Assistant lorsque vous n’êtes pas chez vous. Il n’y a rien à remplir : les enceintes sont trouvées automatiquement.\n\nEnsuite, ouvrez l’app Sonnounce lorsque vous êtes chez vous, sur le même réseau Wi-Fi. Elle trouve ce Home Assistant d’elle-même et propose de l’ajouter. Aucune connexion n’est nécessaire."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Des enceintes Sonos ont été trouvées sur votre réseau. Voulez-vous configurer Sonnounce pour que l’app Sonnounce puisse leur envoyer des annonces via Home Assistant lorsque vous n’êtes pas chez vous ?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Réglages de Sonnounce",
+        "data": {
+          "archive_enabled": "Enregistrer les annonces",
+          "archive_days": "Nombre de jours de conservation des annonces enregistrées",
+          "speaker_host": "Adresse d’une enceinte",
+          "reset_key": "Oublier tous les téléphones et ordinateurs"
+        },
+        "data_description": {
+          "archive_enabled": "Chaque annonce envoyée depuis l’app est enregistrée dans Home Assistant jusqu’à ce que vous la téléchargiez depuis l’app Sonnounce sur votre téléphone ou votre Mac. Les annonces téléchargées sont supprimées de Home Assistant.",
+          "archive_days": "0 signifie qu’elles sont conservées jusqu’à leur téléchargement.",
+          "speaker_host": "Nécessaire uniquement si Home Assistant et les enceintes sont sur des réseaux séparés. Saisissez l’adresse IP de l’une des enceintes, par exemple 192.168.1.20.",
+          "reset_key": "Crée une nouvelle clé. Chaque téléphone et ordinateur doit ajouter à nouveau ce Home Assistant dans l’app Sonnounce, à la maison, sur le même réseau Wi-Fi. Utilisez cette option si vous perdez un téléphone."
+        }
+      }
+    }
+  }
+}

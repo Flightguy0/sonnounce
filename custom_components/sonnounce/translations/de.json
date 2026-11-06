@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Mit Sonnounce kann die App Sonnounce auf deinem Telefon oder Mac über Home Assistant Durchsagen an deine Sonos-Lautsprecher senden, wenn du nicht zu Hause bist. Du musst nichts ausfüllen: Die Lautsprecher werden automatisch gefunden.\n\nÖffne danach die App Sonnounce, während du zu Hause im selben WLAN bist. Sie findet diesen Home Assistant von selbst und bietet an, ihn hinzuzufügen. Eine Anmeldung ist nicht nötig."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "In deinem Netzwerk wurden Sonos-Lautsprecher gefunden. Möchtest du Sonnounce einrichten, damit die App Sonnounce über Home Assistant Durchsagen an sie senden kann, wenn du nicht zu Hause bist?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Sonnounce-Einstellungen",
+        "data": {
+          "archive_enabled": "Durchsagen speichern",
+          "archive_days": "Gespeicherte Durchsagen aufbewahren (Tage)",
+          "speaker_host": "Adresse eines Lautsprechers",
+          "reset_key": "Alle Telefone und Computer vergessen"
+        },
+        "data_description": {
+          "archive_enabled": "Jede Durchsage, die über die App gesendet wird, wird in Home Assistant gespeichert, bis du sie in der App Sonnounce auf deinem Telefon oder Mac herunterlädst. Heruntergeladene Durchsagen werden aus Home Assistant gelöscht.",
+          "archive_days": "0 bedeutet, dass sie aufbewahrt werden, bis sie heruntergeladen sind.",
+          "speaker_host": "Nur nötig, wenn Home Assistant und die Lautsprecher in getrennten Netzwerken sind. Gib die IP-Adresse eines der Lautsprecher ein, zum Beispiel 192.168.1.20.",
+          "reset_key": "Erstellt einen neuen Schlüssel. Jedes Telefon und jeder Computer muss diesen Home Assistant in der App Sonnounce erneut hinzufügen, zu Hause im selben WLAN. Nutze das, wenn du ein Telefon verlierst."
+        }
+      }
+    }
+  }
+}

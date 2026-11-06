@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce memungkinkan app Sonnounce di ponsel atau Mac Anda mengirim pengumuman suara ke speaker Sonos melalui Home Assistant saat Anda tidak di rumah. Tidak ada yang perlu diisi: speaker ditemukan secara otomatis.\n\nSetelah itu, buka app Sonnounce saat Anda di rumah, di Wi-Fi yang sama. App akan menemukan Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tidak perlu masuk akun."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Speaker Sonos ditemukan di jaringan Anda. Apakah Anda ingin menyiapkan Sonnounce, agar app Sonnounce dapat mengirim pengumuman ke speaker tersebut melalui Home Assistant saat Anda tidak di rumah?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce sudah disiapkan."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Pengaturan Sonnounce",
+        "data": {
+          "archive_enabled": "Simpan pengumuman",
+          "archive_days": "Lama penyimpanan pengumuman (hari)",
+          "speaker_host": "Alamat salah satu speaker",
+          "reset_key": "Lupakan semua ponsel dan komputer"
+        },
+        "data_description": {
+          "archive_enabled": "Setiap pengumuman yang dikirim melalui app disimpan di Home Assistant sampai Anda mengunduhnya dari app Sonnounce di ponsel atau Mac Anda. Pengumuman yang sudah diunduh dihapus dari Home Assistant.",
+          "archive_days": "0 berarti pengumuman disimpan sampai diunduh.",
+          "speaker_host": "Hanya diperlukan jika Home Assistant dan speaker berada di jaringan yang berbeda. Masukkan alamat IP salah satu speaker, misalnya 192.168.1.20.",
+          "reset_key": "Membuat kunci baru. Setiap ponsel dan komputer harus menambahkan Home Assistant ini lagi di app Sonnounce, di rumah, di Wi-Fi yang sama. Gunakan ini jika Anda kehilangan ponsel."
+        }
+      }
+    }
+  }
+}

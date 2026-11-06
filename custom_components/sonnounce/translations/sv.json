@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Med Sonnounce kan Sonnounce-appen på din telefon eller Mac skicka röstmeddelanden till dina Sonos-högtalare via Home Assistant när du inte är hemma. Det finns inget att fylla i: högtalarna hittas automatiskt.\n\nÖppna sedan Sonnounce-appen medan du är hemma, på samma Wi-Fi-nätverk. Den hittar den här Home Assistant själv och erbjuder att lägga till den. Ingen inloggning behövs."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Sonos-högtalare hittades i ditt nätverk. Vill du konfigurera Sonnounce så att Sonnounce-appen kan skicka meddelanden till dem via Home Assistant när du inte är hemma?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce är redan konfigurerat."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Inställningar för Sonnounce",
+        "data": {
+          "archive_enabled": "Spara meddelanden",
+          "archive_days": "Antal dagar som sparade meddelanden behålls",
+          "speaker_host": "Adress till en högtalare",
+          "reset_key": "Glöm alla telefoner och datorer"
+        },
+        "data_description": {
+          "archive_enabled": "Varje meddelande som skickas via appen sparas i Home Assistant tills du hämtar det i Sonnounce-appen på din telefon eller Mac. Hämtade meddelanden raderas från Home Assistant.",
+          "archive_days": "0 betyder att de sparas tills de har hämtats.",
+          "speaker_host": "Behövs bara om Home Assistant och högtalarna finns på olika nätverk. Ange IP-adressen till en av högtalarna, till exempel 192.168.1.20.",
+          "reset_key": "Skapar en ny nyckel. Alla telefoner och datorer måste lägga till den här Home Assistant igen i Sonnounce-appen, hemma på samma Wi-Fi-nätverk. Använd detta om du tappar bort en telefon."
+        }
+      }
+    }
+  }
+}

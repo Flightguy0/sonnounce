@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Met Sonnounce kan de Sonnounce-app op je telefoon of Mac via Home Assistant omroepberichten naar je Sonos-speakers sturen als je niet thuis bent. Je hoeft niets in te vullen: de speakers worden automatisch gevonden.\n\nOpen daarna de Sonnounce-app terwijl je thuis bent, op hetzelfde wifinetwerk. De app vindt deze Home Assistant vanzelf en biedt aan om hem toe te voegen. Inloggen is niet nodig."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Er zijn Sonos-speakers gevonden in je netwerk. Wil je Sonnounce instellen, zodat de Sonnounce-app via Home Assistant omroepberichten naar die speakers kan sturen als je niet thuis bent?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce is al ingesteld."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Instellingen voor Sonnounce",
+        "data": {
+          "archive_enabled": "Bewaar omroepberichten",
+          "archive_days": "Aantal dagen dat omroepberichten worden bewaard",
+          "speaker_host": "Adres van een speaker",
+          "reset_key": "Vergeet alle telefoons en computers"
+        },
+        "data_description": {
+          "archive_enabled": "Elk omroepbericht dat via de app wordt verstuurd, wordt in Home Assistant bewaard tot je het downloadt in de Sonnounce-app op je telefoon of Mac. Gedownloade omroepberichten worden uit Home Assistant verwijderd.",
+          "archive_days": "0 betekent dat ze worden bewaard tot ze zijn gedownload.",
+          "speaker_host": "Alleen nodig als Home Assistant en de speakers op aparte netwerken zitten. Vul het IP-adres van een van de speakers in, bijvoorbeeld 192.168.1.20.",
+          "reset_key": "Maakt een nieuwe sleutel. Elke telefoon en computer moet deze Home Assistant opnieuw toevoegen in de Sonnounce-app, thuis op hetzelfde wifinetwerk. Gebruik dit als je een telefoon kwijtraakt."
+        }
+      }
+    }
+  }
+}

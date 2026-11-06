@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce permette all’app Sonnounce sul tuo telefono o Mac di inviare annunci vocali ai tuoi altoparlanti Sonos tramite Home Assistant quando sei fuori casa. Non c’è niente da compilare: gli altoparlanti vengono trovati automaticamente.\n\nPoi apri l’app Sonnounce mentre sei a casa, sulla stessa rete Wi-Fi. Trova da sola questo Home Assistant e propone di aggiungerlo. Non serve alcun accesso."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Sono stati trovati altoparlanti Sonos sulla tua rete. Vuoi configurare Sonnounce, così l’app Sonnounce può inviare loro annunci tramite Home Assistant quando sei fuori casa?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce è già configurato."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Impostazioni di Sonnounce",
+        "data": {
+          "archive_enabled": "Salva gli annunci",
+          "archive_days": "Numero di giorni di conservazione degli annunci salvati",
+          "speaker_host": "Indirizzo di un altoparlante",
+          "reset_key": "Dimentica tutti i telefoni e i computer"
+        },
+        "data_description": {
+          "archive_enabled": "Ogni annuncio inviato tramite l’app viene salvato in Home Assistant finché non lo scarichi dall’app Sonnounce sul tuo telefono o Mac. Gli annunci scaricati vengono eliminati da Home Assistant.",
+          "archive_days": "0 significa che vengono conservati finché non vengono scaricati.",
+          "speaker_host": "Serve solo se Home Assistant e gli altoparlanti sono su reti separate. Inserisci l’indirizzo IP di uno degli altoparlanti, per esempio 192.168.1.20.",
+          "reset_key": "Crea una nuova chiave. Ogni telefono e computer deve aggiungere di nuovo questo Home Assistant nell’app Sonnounce, a casa, sulla stessa rete Wi-Fi. Usalo se perdi un telefono."
+        }
+      }
+    }
+  }
+}

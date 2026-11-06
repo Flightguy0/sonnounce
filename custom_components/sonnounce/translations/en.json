@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce lets the Sonnounce app on your phone or Mac send voice announcements to your Sonos speakers through Home Assistant when you are away from home. There is nothing to fill in: the speakers are found automatically.\n\nAfterwards, open the Sonnounce app while you are at home on the same Wi-Fi. It finds this Home Assistant by itself and offers to add it. No login is needed."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Sonos speakers were found on your network. Do you want to set up Sonnounce, so the Sonnounce app can send announcements to them through Home Assistant when you are away from home?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Sonnounce settings",
+        "data": {
+          "archive_enabled": "Save announcements",
+          "archive_days": "Keep saved announcements for this many days",
+          "speaker_host": "Address of a speaker",
+          "reset_key": "Forget all phones and computers"
+        },
+        "data_description": {
+          "archive_enabled": "Every announcement sent through the app is saved in Home Assistant until you download it from the Sonnounce app on your phone or Mac. Downloaded announcements are deleted from Home Assistant.",
+          "archive_days": "0 means they are kept until they are downloaded.",
+          "speaker_host": "Only needed if Home Assistant and the speakers are on separate networks. Enter the IP address of one of the speakers, for example 192.168.1.20.",
+          "reset_key": "Makes a new key. Every phone and computer must add this Home Assistant again in the Sonnounce app, at home on the same Wi-Fi. Use it if you lose a phone."
+        }
+      }
+    }
+  }
+}

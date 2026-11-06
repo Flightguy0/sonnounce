@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce permite que la app Sonnounce de tu teléfono o Mac envíe avisos de voz a tus altavoces Sonos a través de Home Assistant cuando estás fuera de casa. No hay nada que completar: los altavoces se encuentran automáticamente.\n\nDespués, abre la app Sonnounce mientras estás en casa, en la misma red Wi-Fi. Encuentra este Home Assistant por sí sola y te ofrece agregarlo. No hace falta iniciar sesión."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Se encontraron altavoces Sonos en tu red. ¿Quieres configurar Sonnounce para que la app Sonnounce pueda enviarles avisos a través de Home Assistant cuando estés fuera de casa?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce ya está configurado."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Configuración de Sonnounce",
+        "data": {
+          "archive_enabled": "Guardar avisos",
+          "archive_days": "Días que se conservan los avisos guardados",
+          "speaker_host": "Dirección de un altavoz",
+          "reset_key": "Olvidar todos los teléfonos y computadoras"
+        },
+        "data_description": {
+          "archive_enabled": "Cada aviso enviado desde la app se guarda en Home Assistant hasta que lo descargas desde la app Sonnounce en tu teléfono o Mac. Los avisos descargados se eliminan de Home Assistant.",
+          "archive_days": "0 significa que se conservan hasta que se descargan.",
+          "speaker_host": "Solo es necesario si Home Assistant y los altavoces están en redes separadas. Escribe la dirección IP de uno de los altavoces, por ejemplo 192.168.1.20.",
+          "reset_key": "Crea una clave nueva. Cada teléfono y computadora tiene que volver a agregar este Home Assistant en la app Sonnounce, en casa y en la misma red Wi-Fi. Úsalo si pierdes un teléfono."
+        }
+      }
+    }
+  }
+}

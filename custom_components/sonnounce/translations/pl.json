@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce pozwala aplikacji Sonnounce na Twoim telefonie lub Macu wysyłać komunikaty głosowe do głośników Sonos przez Home Assistant, gdy nie ma Cię w domu. Nie trzeba niczego wypełniać: głośniki są wykrywane automatycznie.\n\nNastępnie otwórz aplikację Sonnounce, gdy jesteś w domu, w tej samej sieci Wi-Fi. Sama znajdzie ten Home Assistant i zaproponuje jego dodanie. Logowanie nie jest potrzebne."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "W Twojej sieci znaleziono głośniki Sonos. Czy chcesz skonfigurować Sonnounce, aby aplikacja Sonnounce mogła wysyłać do nich komunikaty przez Home Assistant, gdy nie ma Cię w domu?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce jest już skonfigurowany."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Ustawienia Sonnounce",
+        "data": {
+          "archive_enabled": "Zapisuj komunikaty",
+          "archive_days": "Liczba dni przechowywania zapisanych komunikatów",
+          "speaker_host": "Adres jednego głośnika",
+          "reset_key": "Zapomnij wszystkie telefony i komputery"
+        },
+        "data_description": {
+          "archive_enabled": "Każdy komunikat wysłany przez aplikację jest zapisywany w Home Assistant, dopóki nie pobierzesz go w aplikacji Sonnounce na telefonie lub Macu. Pobrane komunikaty są usuwane z Home Assistant.",
+          "archive_days": "0 oznacza, że są przechowywane do czasu pobrania.",
+          "speaker_host": "Potrzebne tylko wtedy, gdy Home Assistant i głośniki są w osobnych sieciach. Wpisz adres IP jednego z głośników, na przykład 192.168.1.20.",
+          "reset_key": "Tworzy nowy klucz. Każdy telefon i komputer musi ponownie dodać ten Home Assistant w aplikacji Sonnounce, w domu, w tej samej sieci Wi-Fi. Użyj tego, jeśli zgubisz telefon."
+        }
+      }
+    }
+  }
+}

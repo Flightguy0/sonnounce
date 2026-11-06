@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce מאפשר לאפליקציית Sonnounce בטלפון או ב-Mac לשלוח הודעות קוליות לרמקולי Sonos דרך Home Assistant כשלא נמצאים בבית. אין צורך למלא שום דבר: הרמקולים נמצאים אוטומטית.\n\nאחר כך יש לפתוח את אפליקציית Sonnounce כשנמצאים בבית, באותה רשת Wi-Fi. היא מוצאת את ה-Home Assistant הזה מעצמה ומציעה להוסיף אותו. אין צורך בהתחברות."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "נמצאו רמקולי Sonos ברשת שלך. להגדיר את Sonnounce, כדי שאפליקציית Sonnounce תוכל לשלוח אליהם הודעות דרך Home Assistant כשלא נמצאים בבית?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce כבר מוגדר."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "הגדרות Sonnounce",
+        "data": {
+          "archive_enabled": "שמירת הודעות",
+          "archive_days": "מספר הימים לשמירת הודעות",
+          "speaker_host": "כתובת של רמקול",
+          "reset_key": "ביטול הקישור לכל הטלפונים והמחשבים"
+        },
+        "data_description": {
+          "archive_enabled": "כל הודעה שנשלחת דרך האפליקציה נשמרת ב-Home Assistant עד שמורידים אותה מאפליקציית Sonnounce בטלפון או ב-Mac. הודעות שהורדו נמחקות מ-Home Assistant.",
+          "archive_days": "0 פירושו שהן נשמרות עד שמורידים אותן.",
+          "speaker_host": "נחוץ רק אם Home Assistant והרמקולים נמצאים ברשתות נפרדות. יש להזין את כתובת ה-IP של אחד הרמקולים, לדוגמה 192.168.1.20.",
+          "reset_key": "יוצר מפתח חדש. כל טלפון ומחשב יצטרכו להוסיף שוב את ה-Home Assistant הזה באפליקציית Sonnounce, בבית, באותה רשת Wi-Fi. כדאי להשתמש בזה אם טלפון אבד."
+        }
+      }
+    }
+  }
+}

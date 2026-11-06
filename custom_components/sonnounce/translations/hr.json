@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sonnounce",
+        "description": "Sonnounce omogućuje aplikaciji Sonnounce na vašem telefonu ili Macu da preko Home Assistanta šalje glasovne poruke na vaše Sonos zvučnike kad niste kod kuće. Ništa ne treba ispunjavati: zvučnici se pronalaze automatski.\n\nZatim otvorite aplikaciju Sonnounce dok ste kod kuće, na istoj Wi-Fi mreži. Ona sama pronalazi ovaj Home Assistant i nudi da ga doda. Prijava nije potrebna."
+      },
+      "confirm": {
+        "title": "Sonnounce",
+        "description": "Na vašoj mreži pronađeni su Sonos zvučnici. Želite li postaviti Sonnounce kako bi im aplikacija Sonnounce mogla slati poruke preko Home Assistanta kad niste kod kuće?"
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Sonnounce je već postavljen."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Postavke za Sonnounce",
+        "data": {
+          "archive_enabled": "Spremaj poruke",
+          "archive_days": "Koliko dana čuvati spremljene poruke",
+          "speaker_host": "Adresa jednog zvučnika",
+          "reset_key": "Zaboravi sve telefone i računala"
+        },
+        "data_description": {
+          "archive_enabled": "Svaka poruka poslana iz aplikacije sprema se u Home Assistant dok je ne preuzmete u aplikaciji Sonnounce na telefonu ili Macu. Preuzete poruke brišu se iz Home Assistanta.",
+          "archive_days": "0 znači da se čuvaju dok se ne preuzmu.",
+          "speaker_host": "Potrebno samo ako su Home Assistant i zvučnici na odvojenim mrežama. Upišite IP adresu jednog od zvučnika, na primjer 192.168.1.20.",
+          "reset_key": "Stvara novi ključ. Svaki telefon i računalo mora ponovno dodati ovaj Home Assistant u aplikaciji Sonnounce, kod kuće, na istoj Wi-Fi mreži. Upotrijebite ovo ako izgubite telefon."
+        }
+      }
+    }
+  }
+}
