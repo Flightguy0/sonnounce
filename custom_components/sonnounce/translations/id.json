@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce memungkinkan app Sonnounce di ponsel atau Mac Anda mengirim pengumuman suara ke speaker Sonos melalui Home Assistant saat Anda tidak di rumah. Tidak ada yang perlu diisi: speaker ditemukan secara otomatis.\n\nSetelah itu, buka app Sonnounce saat Anda di rumah, di Wi-Fi yang sama. App akan menemukan Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tidak perlu masuk akun."
+        "description": "Sonnounce memungkinkan app Sonnounce di ponsel atau Mac Anda mengirim pengumuman suara ke speaker Sonos melalui Home Assistant saat Anda tidak di rumah. Tidak ada yang perlu diisi: speaker ditemukan secara otomatis.\n\nSetelah itu, pilih Konfigurasikan lalu Tambahkan ponsel atau komputer. Kemudian, dalam 5 menit, buka app Sonnounce di rumah, di Wi-Fi yang sama. App akan menemukan Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tidak perlu masuk akun di app."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Tambahkan ponsel atau komputer",
+          "settings": "Pengaturan"
+        }
+      },
+      "settings": {
         "title": "Pengaturan Sonnounce",
         "data": {
           "archive_enabled": "Simpan pengumuman",
@@ -28,9 +35,24 @@
           "archive_enabled": "Setiap pengumuman yang dikirim melalui app disimpan di Home Assistant sampai Anda mengunduhnya dari app Sonnounce di ponsel atau Mac Anda. Pengumuman yang sudah diunduh dihapus dari Home Assistant.",
           "archive_days": "0 berarti pengumuman disimpan sampai diunduh.",
           "speaker_host": "Hanya diperlukan jika Home Assistant dan speaker berada di jaringan yang berbeda. Masukkan alamat IP salah satu speaker, misalnya 192.168.1.20.",
-          "reset_key": "Membuat kunci baru. Setiap ponsel dan komputer harus menambahkan Home Assistant ini lagi di app Sonnounce, di rumah, di Wi-Fi yang sama. Gunakan ini jika Anda kehilangan ponsel."
+          "reset_key": "Membuat kunci baru. Setiap ponsel dan komputer kemudian harus ditambahkan lagi: pilih Tambahkan ponsel atau komputer di Konfigurasikan, lalu tambahkan Home Assistant ini di app Sonnounce, di rumah, di Wi-Fi yang sama. Gunakan ini jika Anda kehilangan ponsel."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Penyandingan dibuka selama 5 menit. Buka app Sonnounce di rumah, di Wi-Fi yang sama, lalu tambahkan Home Assistant ini. Penyandingan ditutup lagi segera setelah satu ponsel atau komputer ditambahkan.",
+      "not_ready": "Sonnounce tidak berjalan. Mulai ulang Home Assistant lalu coba lagi."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Sebuah ponsel atau komputer mencoba menambahkan Home Assistant ini di app Sonnounce, tetapi penyandingan tidak dibuka. Untuk mengizinkannya, buka Pengaturan › Perangkat & layanan › Sonnounce, pilih Konfigurasikan lalu Tambahkan ponsel atau komputer, dan coba lagi di app dalam 5 menit."
+    },
+    "paired": {
+      "message": "Sebuah ponsel atau komputer telah ditambahkan di app Sonnounce. Jika itu bukan Anda, buka Pengaturan › Perangkat & layanan › Sonnounce, pilih Konfigurasikan › Pengaturan, lalu aktifkan Lupakan semua ponsel dan komputer."
     }
   }
 }

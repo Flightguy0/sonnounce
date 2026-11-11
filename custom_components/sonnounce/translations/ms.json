@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce membolehkan app Sonnounce pada telefon atau Mac anda menghantar pengumuman suara ke pembesar suara Sonos anda melalui Home Assistant apabila anda tiada di rumah. Tiada apa-apa yang perlu diisi: pembesar suara dijumpai secara automatik.\n\nSelepas itu, buka app Sonnounce semasa anda di rumah, pada Wi-Fi yang sama. Ia menjumpai Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tiada log masuk diperlukan."
+        "description": "Sonnounce membolehkan app Sonnounce pada telefon atau Mac anda menghantar pengumuman suara ke pembesar suara Sonos anda melalui Home Assistant apabila anda tiada di rumah. Tiada apa-apa yang perlu diisi: pembesar suara dijumpai secara automatik.\n\nSelepas itu, pilih Konfigurasikan dan kemudian Tambah telefon atau komputer. Kemudian, dalam masa 5 minit, buka app Sonnounce di rumah, pada Wi-Fi yang sama. Ia menjumpai Home Assistant ini dengan sendirinya dan menawarkan untuk menambahkannya. Tiada log masuk diperlukan dalam app."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Tambah telefon atau komputer",
+          "settings": "Seting"
+        }
+      },
+      "settings": {
         "title": "Seting Sonnounce",
         "data": {
           "archive_enabled": "Simpan pengumuman",
@@ -28,9 +35,24 @@
           "archive_enabled": "Setiap pengumuman yang dihantar melalui app disimpan dalam Home Assistant sehingga anda memuat turunnya daripada app Sonnounce pada telefon atau Mac anda. Pengumuman yang telah dimuat turun dipadam daripada Home Assistant.",
           "archive_days": "0 bermaksud ia disimpan sehingga dimuat turun.",
           "speaker_host": "Hanya diperlukan jika Home Assistant dan pembesar suara berada pada rangkaian yang berasingan. Masukkan alamat IP salah satu pembesar suara, contohnya 192.168.1.20.",
-          "reset_key": "Membuat kunci baharu. Setiap telefon dan komputer perlu menambah Home Assistant ini semula dalam app Sonnounce, di rumah, pada Wi-Fi yang sama. Gunakan ini jika anda kehilangan telefon."
+          "reset_key": "Membuat kunci baharu. Setiap telefon dan komputer kemudian perlu ditambah semula: pilih Tambah telefon atau komputer di bawah Konfigurasikan, dan tambah Home Assistant ini dalam app Sonnounce, di rumah, pada Wi-Fi yang sama. Gunakan ini jika anda kehilangan telefon."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Pemasangan dibuka selama 5 minit. Buka app Sonnounce di rumah, pada Wi-Fi yang sama, dan tambah Home Assistant ini. Pemasangan ditutup semula sebaik sahaja satu telefon atau komputer ditambah.",
+      "not_ready": "Sonnounce tidak berjalan. Mulakan semula Home Assistant dan cuba lagi."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Sebuah telefon atau komputer cuba menambah Home Assistant ini dalam app Sonnounce, tetapi pemasangan tidak dibuka. Untuk membenarkannya, pergi ke Tetapan › Peranti & perkhidmatan › Sonnounce, pilih Konfigurasikan dan kemudian Tambah telefon atau komputer, dan cuba lagi dalam app dalam masa 5 minit."
+    },
+    "paired": {
+      "message": "Sebuah telefon atau komputer telah ditambah dalam app Sonnounce. Jika itu bukan anda, pergi ke Tetapan › Peranti & perkhidmatan › Sonnounce, pilih Konfigurasikan › Seting dan hidupkan Lupakan semua telefon dan komputer."
     }
   }
 }

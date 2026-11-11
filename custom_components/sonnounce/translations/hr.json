@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce omogućuje aplikaciji Sonnounce na vašem telefonu ili Macu da preko Home Assistanta šalje glasovne poruke na vaše Sonos zvučnike kad niste kod kuće. Ništa ne treba ispunjavati: zvučnici se pronalaze automatski.\n\nZatim otvorite aplikaciju Sonnounce dok ste kod kuće, na istoj Wi-Fi mreži. Ona sama pronalazi ovaj Home Assistant i nudi da ga doda. Prijava nije potrebna."
+        "description": "Sonnounce omogućuje aplikaciji Sonnounce na vašem telefonu ili Macu da preko Home Assistanta šalje glasovne poruke na vaše Sonos zvučnike kad niste kod kuće. Ništa ne treba ispunjavati: zvučnici se pronalaze automatski.\n\nZatim odaberite Konfiguriraj pa Dodaj telefon ili računalo. Nakon toga u roku od 5 minuta otvorite aplikaciju Sonnounce kod kuće, na istoj Wi-Fi mreži. Ona sama pronalazi ovaj Home Assistant i nudi da ga doda. Prijava u aplikaciji nije potrebna."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Dodaj telefon ili računalo",
+          "settings": "Postavke"
+        }
+      },
+      "settings": {
         "title": "Postavke za Sonnounce",
         "data": {
           "archive_enabled": "Spremaj poruke",
@@ -28,9 +35,24 @@
           "archive_enabled": "Svaka poruka poslana iz aplikacije sprema se u Home Assistant dok je ne preuzmete u aplikaciji Sonnounce na telefonu ili Macu. Preuzete poruke brišu se iz Home Assistanta.",
           "archive_days": "0 znači da se čuvaju dok se ne preuzmu.",
           "speaker_host": "Potrebno samo ako su Home Assistant i zvučnici na odvojenim mrežama. Upišite IP adresu jednog od zvučnika, na primjer 192.168.1.20.",
-          "reset_key": "Stvara novi ključ. Svaki telefon i računalo mora ponovno dodati ovaj Home Assistant u aplikaciji Sonnounce, kod kuće, na istoj Wi-Fi mreži. Upotrijebite ovo ako izgubite telefon."
+          "reset_key": "Stvara novi ključ. Svaki telefon i računalo zatim treba ponovno dodati: odaberite Dodaj telefon ili računalo pod Konfiguriraj i dodajte ovaj Home Assistant u aplikaciji Sonnounce, kod kuće, na istoj Wi-Fi mreži. Upotrijebite ovo ako izgubite telefon."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Uparivanje je otvoreno 5 minuta. Otvorite aplikaciju Sonnounce kod kuće, na istoj Wi-Fi mreži, i dodajte ovaj Home Assistant. Uparivanje se ponovno zatvara čim se doda jedan telefon ili računalo.",
+      "not_ready": "Sonnounce ne radi. Ponovno pokrenite Home Assistant i pokušajte ponovo."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Telefon ili računalo pokušao je dodati ovaj Home Assistant u aplikaciji Sonnounce, ali uparivanje nije otvoreno. Da biste to dopustili, idite na Postavke › Uređaji i usluge › Sonnounce, odaberite Konfiguriraj, zatim Dodaj telefon ili računalo, i pokušajte ponovo u aplikaciji u roku od 5 minuta."
+    },
+    "paired": {
+      "message": "U aplikaciji Sonnounce dodan je telefon ili računalo. Ako to niste bili vi, idite na Postavke › Uređaji i usluge › Sonnounce, odaberite Konfiguriraj › Postavke i uključite Zaboravi sve telefone i računala."
     }
   }
 }

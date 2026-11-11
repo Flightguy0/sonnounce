@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce lets the Sonnounce app on your phone or Mac send voice announcements to your Sonos speakers through Home Assistant when you are away from home. There is nothing to fill in: the speakers are found automatically.\n\nAfterwards, open the Sonnounce app while you are at home on the same Wi-Fi. It finds this Home Assistant by itself and offers to add it. No login is needed."
+        "description": "Sonnounce lets the Sonnounce app on your phone or Mac send voice announcements to your Sonos speakers through Home Assistant when you are away from home. There is nothing to fill in: the speakers are found automatically.\n\nAfterwards, choose Configure and then Add a phone or computer. Then, within 5 minutes, open the Sonnounce app at home on the same Wi-Fi. It finds this Home Assistant by itself and offers to add it. No login is needed in the app."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Add a phone or computer",
+          "settings": "Settings"
+        }
+      },
+      "settings": {
         "title": "Sonnounce settings",
         "data": {
           "archive_enabled": "Save announcements",
@@ -28,9 +35,24 @@
           "archive_enabled": "Every announcement sent through the app is saved in Home Assistant until you download it from the Sonnounce app on your phone or Mac. Downloaded announcements are deleted from Home Assistant.",
           "archive_days": "0 means they are kept until they are downloaded.",
           "speaker_host": "Only needed if Home Assistant and the speakers are on separate networks. Enter the IP address of one of the speakers, for example 192.168.1.20.",
-          "reset_key": "Makes a new key. Every phone and computer must add this Home Assistant again in the Sonnounce app, at home on the same Wi-Fi. Use it if you lose a phone."
+          "reset_key": "Makes a new key. Every phone and computer must then be added again: choose Add a phone or computer under Configure, and add this Home Assistant in the Sonnounce app at home on the same Wi-Fi. Use it if you lose a phone."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Pairing is open for 5 minutes. Open the Sonnounce app at home, on the same Wi-Fi, and add this Home Assistant. Pairing closes again as soon as one phone or computer has been added.",
+      "not_ready": "Sonnounce is not running. Restart Home Assistant and try again."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "A phone or computer tried to add this Home Assistant in the Sonnounce app, but pairing is not open. To allow it, go to Settings › Devices & services › Sonnounce, choose Configure and then Add a phone or computer, and try again in the app within 5 minutes."
+    },
+    "paired": {
+      "message": "A phone or computer has been added in the Sonnounce app. If that was not you, go to Settings › Devices & services › Sonnounce, choose Configure › Settings and turn on Forget all phones and computers."
     }
   }
 }

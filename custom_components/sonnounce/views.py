@@ -1,18 +1,21 @@
 """Det appen ringer til.
 
-Ligesom på Homey er der intet login. Står telefonen på husets net, henter den
-en nøgle med `pair`, og den nøgle sendes med i headeren `X-Sonnounce-Key` på
-alle andre kald — hjemme og ude, over hvilken fjernadgang man end har. Et
-almindeligt Home Assistant-login (Bearer) virker også, så man kan bruge
-kaldene fra sine egne scripts.
+Der er intet login i appen. Telefonen henter en nøgle med `pair`, og den
+nøgle sendes med i headeren `X-Sonnounce-Key` på alle andre kald — hjemme og
+ude, over hvilken fjernadgang man end har. Et almindeligt Home Assistant-login
+(Bearer) virker også, så man kan bruge kaldene fra sine egne scripts.
 
-`pair` udleverer kun nøglen til en adresse på husets eget net og aldrig
-gennem Home Assistant Cloud. Den der står på husets wifi, kan i forvejen
-styre højttalerne direkte, så der bliver ikke givet mere væk end der står
-åbent.
+`pair` udleverer kun nøglen, når en administrator har åbnet for det under
+Konfigurer ("Tilføj en telefon eller computer"). Vinduet står åbent i fem
+minutter og lukker, så snart én enhed har fået nøglen. Derudover skal kaldet
+komme fra husets eget net og ikke gennem Home Assistant Cloud. Med et
+administrator-login (Bearer) udleveres nøglen uden vindue.
+
+Forkerte nøgler tælles pr. afsender. Efter for mange svares der 429 et
+kvarter, så appen ikke tror at dens egen nøgle er blevet ugyldig.
 
   GET    /api/sonnounce/hello              findes Sonnounce her
-  GET    /api/sonnounce/pair               nøglen (kun fra husets net)
+  GET    /api/sonnounce/pair               nøglen (kun når der er åbnet for det)
   GET    /api/sonnounce/info               version og adresserne ude og hjemme
   GET    /api/sonnounce/speakers           højttalerne der kan sendes til
   POST   /api/sonnounce/announce           send en besked (kroppen er lyden)
@@ -35,8 +38,16 @@ from http import HTTPStatus
 from aiohttp import web
 from yarl import URL
 
-from homeassistant.components.http import KEY_AUTHENTICATED, KEY_HASS, HomeAssistantView
+from homeassistant.components import persistent_notification
+from homeassistant.components.http import (
+    KEY_AUTHENTICATED,
+    KEY_HASS,
+    KEY_HASS_USER,
+    HomeAssistantView,
+)
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers import instance_id
+from homeassistant.helpers.translation import async_get_translations
 from homeassistant.helpers.network import NoURLAvailableError, get_url, is_cloud_connection
 
 from .announcer import AnnounceError, Announcer
@@ -98,7 +109,12 @@ class SonnounceView(HomeAssistantView):
             return _not_ready()
         if request.get(KEY_AUTHENTICATED):
             return None
-        if announcer.authorize(request.headers.get("X-Sonnounce-Key")):
+        if announcer.locked_out(request.remote):
+            return _error(
+                "too many wrong keys from this address, try again in 15 minutes",
+                HTTPStatus.TOO_MANY_REQUESTS,
+            )
+        if announcer.authorize(request.headers.get("X-Sonnounce-Key"), request.remote):
             return None
         return _error("the key does not match", HTTPStatus.FORBIDDEN)
 
@@ -145,8 +161,30 @@ def _asked_locally(request: web.Request) -> bool:
     return address.is_private or address.is_loopback or address.is_link_local
 
 
+NOTIFY_PAIRING = "sonnounce_pairing"
+
+
+async def _notify(hass: HomeAssistant, which: str) -> None:
+    """En besked i Home Assistant, på brugerens eget sprog."""
+    texts = await async_get_translations(hass, hass.config.language, "exceptions", [DOMAIN])
+    prefix = f"component.{DOMAIN}.exceptions."
+    title = texts.get(prefix + "notify_title.message", "Sonnounce")
+    message = texts.get(prefix + which + ".message")
+    if message:
+        persistent_notification.async_create(hass, message, title, NOTIFY_PAIRING)
+
+
+def _is_admin(request: web.Request) -> bool:
+    user = request.get(KEY_HASS_USER)
+    return bool(request.get(KEY_AUTHENTICATED) and user is not None and user.is_admin)
+
+
 class PairView(HomeAssistantView):
-    """Udleverer nøglen til en telefon på husets net. Det er hele parringen."""
+    """Udleverer nøglen til en ny telefon eller computer. Det er hele parringen.
+
+    Kræver at en administrator har åbnet for det under Konfigurer — eller et
+    administrator-login på selve kaldet.
+    """
 
     url = "/api/sonnounce/pair"
     name = "api:sonnounce:pair"
@@ -157,8 +195,20 @@ class PairView(HomeAssistantView):
         announcer = _announcer(request)
         if not announcer:
             return _not_ready()
-        if is_cloud_connection(hass) or not _is_home(request) or not _asked_locally(request):
-            return _error("pairing is only possible from home", HTTPStatus.FORBIDDEN)
+        if not _is_admin(request):
+            if is_cloud_connection(hass) or not _is_home(request) or not _asked_locally(request):
+                return _error("pairing is only possible from home", HTTPStatus.FORBIDDEN)
+            if not announcer.pairing_open:
+                # Appen siger selv at man skal være hjemme. Beskeden i Home
+                # Assistant fortæller hvad der faktisk mangler.
+                await _notify(hass, "pairing_closed")
+                return _error(
+                    "pairing is not open: in Home Assistant, open Sonnounce, choose "
+                    "Configure and then Add a phone or computer",
+                    HTTPStatus.FORBIDDEN,
+                )
+            announcer.close_pairing()
+            await _notify(hass, "paired")
         external, internal = _urls(hass)
         return web.json_response(
             {

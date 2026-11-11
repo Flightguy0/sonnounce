@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Med Sonnounce kan Sonnounce-appen på din telefon eller Mac skicka röstmeddelanden till dina Sonos-högtalare via Home Assistant när du inte är hemma. Det finns inget att fylla i: högtalarna hittas automatiskt.\n\nÖppna sedan Sonnounce-appen medan du är hemma, på samma Wi-Fi-nätverk. Den hittar den här Home Assistant själv och erbjuder att lägga till den. Ingen inloggning behövs."
+        "description": "Med Sonnounce kan Sonnounce-appen på din telefon eller Mac skicka röstmeddelanden till dina Sonos-högtalare via Home Assistant när du inte är hemma. Det finns inget att fylla i: högtalarna hittas automatiskt.\n\nVälj sedan Konfigurera och därefter Lägg till en telefon eller dator. Öppna sedan Sonnounce-appen inom 5 minuter, hemma på samma Wi-Fi-nätverk. Den hittar den här Home Assistant själv och erbjuder att lägga till den. Ingen inloggning behövs i appen."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Lägg till en telefon eller dator",
+          "settings": "Inställningar"
+        }
+      },
+      "settings": {
         "title": "Inställningar för Sonnounce",
         "data": {
           "archive_enabled": "Spara meddelanden",
@@ -28,9 +35,24 @@
           "archive_enabled": "Varje meddelande som skickas via appen sparas i Home Assistant tills du hämtar det i Sonnounce-appen på din telefon eller Mac. Hämtade meddelanden raderas från Home Assistant.",
           "archive_days": "0 betyder att de sparas tills de har hämtats.",
           "speaker_host": "Behövs bara om Home Assistant och högtalarna finns på olika nätverk. Ange IP-adressen till en av högtalarna, till exempel 192.168.1.20.",
-          "reset_key": "Skapar en ny nyckel. Alla telefoner och datorer måste lägga till den här Home Assistant igen i Sonnounce-appen, hemma på samma Wi-Fi-nätverk. Använd detta om du tappar bort en telefon."
+          "reset_key": "Skapar en ny nyckel. Alla telefoner och datorer måste sedan läggas till igen: välj Lägg till en telefon eller dator under Konfigurera, och lägg till den här Home Assistant i Sonnounce-appen hemma på samma Wi-Fi-nätverk. Använd detta om du tappar bort en telefon."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Parkoppling är öppen i 5 minuter. Öppna Sonnounce-appen hemma, på samma Wi-Fi-nätverk, och lägg till den här Home Assistant. Parkopplingen stängs igen så fort en telefon eller dator har lagts till.",
+      "not_ready": "Sonnounce körs inte. Starta om Home Assistant och försök igen."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "En telefon eller dator försökte lägga till den här Home Assistant i Sonnounce-appen, men parkoppling är inte öppen. För att tillåta det, gå till Inställningar › Enheter och tjänster › Sonnounce, välj Konfigurera och sedan Lägg till en telefon eller dator, och försök igen i appen inom 5 minuter."
+    },
+    "paired": {
+      "message": "En telefon eller dator har lagts till i Sonnounce-appen. Om det inte var du, gå till Inställningar › Enheter och tjänster › Sonnounce, välj Konfigurera › Inställningar och slå på Glöm alla telefoner och datorer."
     }
   }
 }

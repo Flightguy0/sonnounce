@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import asyncio
 import hmac
+import ipaddress
 import logging
 import secrets
 import socket
@@ -34,6 +35,9 @@ from .const import (
     EVENT_PLAYED,
     EVENT_SPEAKERS_FOUND,
     EVENT_SPEAKERS_LOST,
+    LOCKOUT_SECONDS,
+    MAX_FAILURES,
+    PAIRING_SECONDS,
 )
 from .legacy import Legacy, Published
 from .sonos_local import SonosError, SonosLocal, Speaker
@@ -84,8 +88,10 @@ class Announcer:
         self._checking = False
         self.last_announcement: float | None = None
         self.key: str = ""
-        self._failures = 0
-        self._failed_at = 0.0
+        # Forkerte nøgler, talt pr. afsender: adresse → (antal, første gang).
+        self._failures: dict[str, tuple[int, float]] = {}
+        # Hvornår parringsvinduet lukker igen (0 = lukket).
+        self._pairing_until = 0.0
 
     async def async_start(self) -> None:
         state = await self._store.async_load() or {}
@@ -116,17 +122,76 @@ class Announcer:
         self.key = secrets.token_urlsafe(32)
         await self._store.async_save(self._state())
 
-    def authorize(self, given: str | None) -> bool:
+    # Parring
+
+    def open_pairing(self) -> None:
+        """Lader én ny telefon eller computer hente nøglen de næste minutter.
+
+        Åbnes af en administrator under Konfigurer i Home Assistant.
+        """
+        self._pairing_until = time.monotonic() + PAIRING_SECONDS
+
+    def close_pairing(self) -> None:
+        self._pairing_until = 0.0
+
+    @property
+    def pairing_open(self) -> bool:
+        return time.monotonic() < self._pairing_until
+
+    # Nøglen
+
+    @staticmethod
+    def _source(remote: str | None) -> str:
+        """Hvem et forkert forsøg tælles på.
+
+        IPv6 tælles pr. /64, for ét hjem eller én maskine råder typisk over en
+        hel /64 og kan ellers bare skifte adresse.
+        """
+        try:
+            address = ipaddress.ip_address(remote or "")
+        except ValueError:
+            return remote or ""
+        if address.version == 6:
+            if address.ipv4_mapped:
+                return str(address.ipv4_mapped)
+            return str(ipaddress.ip_network(f"{address}/64", strict=False))
+        return str(address)
+
+    def locked_out(self, remote: str | None) -> bool:
+        """Om afsenderen har prøvet med forkerte nøgler for mange gange.
+
+        Det gælder kun den afsender — telefoner der har den rigtige nøgle,
+        kan stadig komme igennem, selv om nogen andre prøver at gætte.
+        """
+        source = self._source(remote)
+        entry = self._failures.get(source)
+        if entry is None:
+            return False
+        count, since = entry
+        if time.monotonic() - since > LOCKOUT_SECONDS:
+            del self._failures[source]
+            return False
+        return count >= MAX_FAILURES
+
+    def authorize(self, given: str | None, remote: str | None) -> bool:
         """Kontrollerer nøglen på et kald.
 
-        Sammenligningen tager lige lang tid uanset hvor mange tegn der passer,
-        og der tages højst imod 20 forkerte forsøg i kvarteret.
+        Sammenligningen tager lige lang tid uanset hvor mange tegn der passer.
+        Spørg `locked_out` først; et forkert forsøg tælles på afsenderen.
         """
+        if self.key and given and hmac.compare_digest(given.encode(), self.key.encode()):
+            return True
         now = time.monotonic()
-        if now - self._failed_at > 15 * 60:
-            self._failures = 0
-        if self._failures >= 20:
-            return False
+        if len(self._failures) > 1000:
+            self._failures = {
+                k: v for k, v in self._failures.items() if now - v[1] <= LOCKOUT_SECONDS
+            }
+        source = self._source(remote)
+        count, since = self._failures.get(source, (0, now))
+        if now - since > LOCKOUT_SECONDS:
+            count, since = 0, now
+        self._failures[source] = (count + 1, since)
+        return False
         if self.key and given and hmac.compare_digest(given.encode(), self.key.encode()):
             self._failures = 0
             return True

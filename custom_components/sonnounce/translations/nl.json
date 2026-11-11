@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Met Sonnounce kan de Sonnounce-app op je telefoon of Mac via Home Assistant omroepberichten naar je Sonos-speakers sturen als je niet thuis bent. Je hoeft niets in te vullen: de speakers worden automatisch gevonden.\n\nOpen daarna de Sonnounce-app terwijl je thuis bent, op hetzelfde wifinetwerk. De app vindt deze Home Assistant vanzelf en biedt aan om hem toe te voegen. Inloggen is niet nodig."
+        "description": "Met Sonnounce kan de Sonnounce-app op je telefoon of Mac via Home Assistant omroepberichten naar je Sonos-speakers sturen als je niet thuis bent. Je hoeft niets in te vullen: de speakers worden automatisch gevonden.\n\nKies daarna Configureren en dan Telefoon of computer toevoegen. Open vervolgens binnen 5 minuten de Sonnounce-app thuis op hetzelfde wifinetwerk. De app vindt deze Home Assistant vanzelf en biedt aan om hem toe te voegen. Inloggen in de app is niet nodig."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Telefoon of computer toevoegen",
+          "settings": "Instellingen"
+        }
+      },
+      "settings": {
         "title": "Instellingen voor Sonnounce",
         "data": {
           "archive_enabled": "Bewaar omroepberichten",
@@ -28,9 +35,24 @@
           "archive_enabled": "Elk omroepbericht dat via de app wordt verstuurd, wordt in Home Assistant bewaard tot je het downloadt in de Sonnounce-app op je telefoon of Mac. Gedownloade omroepberichten worden uit Home Assistant verwijderd.",
           "archive_days": "0 betekent dat ze worden bewaard tot ze zijn gedownload.",
           "speaker_host": "Alleen nodig als Home Assistant en de speakers op aparte netwerken zitten. Vul het IP-adres van een van de speakers in, bijvoorbeeld 192.168.1.20.",
-          "reset_key": "Maakt een nieuwe sleutel. Elke telefoon en computer moet deze Home Assistant opnieuw toevoegen in de Sonnounce-app, thuis op hetzelfde wifinetwerk. Gebruik dit als je een telefoon kwijtraakt."
+          "reset_key": "Maakt een nieuwe sleutel. Elke telefoon en computer moet daarna opnieuw worden toegevoegd: kies Telefoon of computer toevoegen onder Configureren en voeg deze Home Assistant toe in de Sonnounce-app, thuis op hetzelfde wifinetwerk. Gebruik dit als je een telefoon kwijtraakt."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Koppelen is 5 minuten mogelijk. Open de Sonnounce-app thuis op hetzelfde wifinetwerk en voeg deze Home Assistant toe. Koppelen wordt weer gesloten zodra er één telefoon of computer is toegevoegd.",
+      "not_ready": "Sonnounce draait niet. Start Home Assistant opnieuw en probeer het nog eens."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Een telefoon of computer probeerde deze Home Assistant toe te voegen in de Sonnounce-app, maar koppelen staat niet open. Om het toe te staan, ga je naar Instellingen › Apparaten & diensten › Sonnounce, kies je Configureren en dan Telefoon of computer toevoegen, en probeer je het binnen 5 minuten opnieuw in de app."
+    },
+    "paired": {
+      "message": "Er is een telefoon of computer toegevoegd in de Sonnounce-app. Was jij dat niet, ga dan naar Instellingen › Apparaten & diensten › Sonnounce, kies Configureren › Instellingen en zet Vergeet alle telefoons en computers aan."
     }
   }
 }

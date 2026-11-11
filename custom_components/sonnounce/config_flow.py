@@ -1,8 +1,10 @@
 """Opsætningen i Home Assistant.
 
 Der er ikke noget at udfylde: Sonnounce finder selv højttalerne. Under
-Konfigurer kan man slå "Gem beskeder" til og skrive adressen på en højttaler,
-hvis Home Assistant og højttalerne står på hvert sit net.
+Konfigurer er der to valg: "Tilføj en telefon eller computer", der åbner for
+parring i fem minutter, og "Indstillinger", hvor man kan slå "Gem beskeder" til
+og skrive adressen på en højttaler, hvis Home Assistant og højttalerne står på
+hvert sit net.
 """
 
 from __future__ import annotations
@@ -60,6 +62,17 @@ class SonnounceConfigFlow(ConfigFlow, domain=DOMAIN):
 
 class SonnounceOptionsFlow(OptionsFlow):
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        return self.async_show_menu(step_id="init", menu_options=["pair", "settings"])
+
+    async def async_step_pair(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        """Åbner for parring. Kun administratorer kan nå hertil."""
+        announcer = self.hass.data.get(DOMAIN)
+        if announcer is None:
+            return self.async_abort(reason="not_ready")
+        announcer.open_pairing()
+        return self.async_abort(reason="pairing_open")
+
+    async def async_step_settings(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         if user_input is not None:
             user_input[CONF_SPEAKER_HOST] = (user_input.get(CONF_SPEAKER_HOST) or "").strip()
             if user_input.pop(CONF_RESET_KEY, False):
@@ -84,4 +97,4 @@ class SonnounceOptionsFlow(OptionsFlow):
                 vol.Optional(CONF_RESET_KEY, default=False): bool,
             }
         )
-        return self.async_show_form(step_id="init", data_schema=schema)
+        return self.async_show_form(step_id="settings", data_schema=schema)

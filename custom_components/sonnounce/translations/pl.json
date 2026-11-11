@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce pozwala aplikacji Sonnounce na Twoim telefonie lub Macu wysyłać komunikaty głosowe do głośników Sonos przez Home Assistant, gdy nie ma Cię w domu. Nie trzeba niczego wypełniać: głośniki są wykrywane automatycznie.\n\nNastępnie otwórz aplikację Sonnounce, gdy jesteś w domu, w tej samej sieci Wi-Fi. Sama znajdzie ten Home Assistant i zaproponuje jego dodanie. Logowanie nie jest potrzebne."
+        "description": "Sonnounce pozwala aplikacji Sonnounce na Twoim telefonie lub Macu wysyłać komunikaty głosowe do głośników Sonos przez Home Assistant, gdy nie ma Cię w domu. Nie trzeba niczego wypełniać: głośniki są wykrywane automatycznie.\n\nNastępnie wybierz Konfiguruj, a potem Dodaj telefon lub komputer. Potem w ciągu 5 minut otwórz aplikację Sonnounce w domu, w tej samej sieci Wi-Fi. Sama znajdzie ten Home Assistant i zaproponuje jego dodanie. Logowanie w aplikacji nie jest potrzebne."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Dodaj telefon lub komputer",
+          "settings": "Ustawienia"
+        }
+      },
+      "settings": {
         "title": "Ustawienia Sonnounce",
         "data": {
           "archive_enabled": "Zapisuj komunikaty",
@@ -28,9 +35,24 @@
           "archive_enabled": "Każdy komunikat wysłany przez aplikację jest zapisywany w Home Assistant, dopóki nie pobierzesz go w aplikacji Sonnounce na telefonie lub Macu. Pobrane komunikaty są usuwane z Home Assistant.",
           "archive_days": "0 oznacza, że są przechowywane do czasu pobrania.",
           "speaker_host": "Potrzebne tylko wtedy, gdy Home Assistant i głośniki są w osobnych sieciach. Wpisz adres IP jednego z głośników, na przykład 192.168.1.20.",
-          "reset_key": "Tworzy nowy klucz. Każdy telefon i komputer musi ponownie dodać ten Home Assistant w aplikacji Sonnounce, w domu, w tej samej sieci Wi-Fi. Użyj tego, jeśli zgubisz telefon."
+          "reset_key": "Tworzy nowy klucz. Każdy telefon i komputer trzeba wtedy dodać ponownie: wybierz Dodaj telefon lub komputer w Konfiguruj i dodaj ten Home Assistant w aplikacji Sonnounce, w domu, w tej samej sieci Wi-Fi. Użyj tego, jeśli zgubisz telefon."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Parowanie jest otwarte przez 5 minut. Otwórz aplikację Sonnounce w domu, w tej samej sieci Wi-Fi, i dodaj ten Home Assistant. Parowanie zamyka się, gdy tylko zostanie dodany jeden telefon lub komputer.",
+      "not_ready": "Sonnounce nie działa. Uruchom ponownie Home Assistant i spróbuj jeszcze raz."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Telefon lub komputer próbował dodać ten Home Assistant w aplikacji Sonnounce, ale parowanie nie jest otwarte. Aby na to pozwolić, przejdź do Ustawienia › Urządzenia i usługi › Sonnounce, wybierz Konfiguruj, a następnie Dodaj telefon lub komputer, i spróbuj ponownie w aplikacji w ciągu 5 minut."
+    },
+    "paired": {
+      "message": "W aplikacji Sonnounce dodano telefon lub komputer. Jeśli to nie Ty, przejdź do Ustawienia › Urządzenia i usługi › Sonnounce, wybierz Konfiguruj › Ustawienia i włącz Zapomnij wszystkie telefony i komputery."
     }
   }
 }

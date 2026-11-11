@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "sonnounce"
-VERSION = "2.2.1"
+VERSION = "2.3.0"
 
 # Indstillinger, sat under Konfigurer på integrationen.
 CONF_ARCHIVE_ENABLED = "archive_enabled"
@@ -12,6 +12,15 @@ CONF_SPEAKER_HOST = "speaker_host"
 # Ikke en indstilling, men en knap: laver en ny nøgle, så alle telefoner
 # skal tilføje Home Assistant igen.
 CONF_RESET_KEY = "reset_key"
+
+# Hvor længe en ny telefon kan tilføjes, efter at nogen har valgt "Tilføj en
+# telefon eller computer" under Konfigurer.
+PAIRING_SECONDS = 5 * 60
+
+# Forkerte nøgler: så mange fra samme afsender, og så er den afsender lukket
+# ude et kvarter.
+MAX_FAILURES = 20
+LOCKOUT_SECONDS = 15 * 60
 
 DEFAULT_ARCHIVE_DAYS = 30
 

@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Mit Sonnounce kann die App Sonnounce auf deinem Telefon oder Mac über Home Assistant Durchsagen an deine Sonos-Lautsprecher senden, wenn du nicht zu Hause bist. Du musst nichts ausfüllen: Die Lautsprecher werden automatisch gefunden.\n\nÖffne danach die App Sonnounce, während du zu Hause im selben WLAN bist. Sie findet diesen Home Assistant von selbst und bietet an, ihn hinzuzufügen. Eine Anmeldung ist nicht nötig."
+        "description": "Mit Sonnounce kann die App Sonnounce auf deinem Telefon oder Mac über Home Assistant Durchsagen an deine Sonos-Lautsprecher senden, wenn du nicht zu Hause bist. Du musst nichts ausfüllen: Die Lautsprecher werden automatisch gefunden.\n\nWähle danach Konfigurieren und dann Telefon oder Computer hinzufügen. Öffne anschließend innerhalb von 5 Minuten die App Sonnounce zu Hause im selben WLAN. Sie findet diesen Home Assistant von selbst und bietet an, ihn hinzuzufügen. In der App ist keine Anmeldung nötig."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Telefon oder Computer hinzufügen",
+          "settings": "Einstellungen"
+        }
+      },
+      "settings": {
         "title": "Sonnounce-Einstellungen",
         "data": {
           "archive_enabled": "Durchsagen speichern",
@@ -28,9 +35,24 @@
           "archive_enabled": "Jede Durchsage, die über die App gesendet wird, wird in Home Assistant gespeichert, bis du sie in der App Sonnounce auf deinem Telefon oder Mac herunterlädst. Heruntergeladene Durchsagen werden aus Home Assistant gelöscht.",
           "archive_days": "0 bedeutet, dass sie aufbewahrt werden, bis sie heruntergeladen sind.",
           "speaker_host": "Nur nötig, wenn Home Assistant und die Lautsprecher in getrennten Netzwerken sind. Gib die IP-Adresse eines der Lautsprecher ein, zum Beispiel 192.168.1.20.",
-          "reset_key": "Erstellt einen neuen Schlüssel. Jedes Telefon und jeder Computer muss diesen Home Assistant in der App Sonnounce erneut hinzufügen, zu Hause im selben WLAN. Nutze das, wenn du ein Telefon verlierst."
+          "reset_key": "Erstellt einen neuen Schlüssel. Jedes Telefon und jeder Computer muss danach erneut hinzugefügt werden: Wähle unter Konfigurieren Telefon oder Computer hinzufügen und füge diesen Home Assistant in der App Sonnounce zu Hause im selben WLAN hinzu. Nutze das, wenn du ein Telefon verlierst."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "Das Koppeln ist 5 Minuten lang möglich. Öffne die App Sonnounce zu Hause im selben WLAN und füge diesen Home Assistant hinzu. Sobald ein Telefon oder Computer hinzugefügt wurde, wird das Koppeln wieder geschlossen.",
+      "not_ready": "Sonnounce läuft nicht. Starte Home Assistant neu und versuche es erneut."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Ein Telefon oder Computer hat versucht, diesen Home Assistant in der App Sonnounce hinzuzufügen, aber das Koppeln ist nicht geöffnet. Um es zu erlauben, gehe zu Einstellungen › Geräte & Dienste › Sonnounce, wähle Konfigurieren und dann Telefon oder Computer hinzufügen, und versuche es innerhalb von 5 Minuten erneut in der App."
+    },
+    "paired": {
+      "message": "In der App Sonnounce wurde ein Telefon oder Computer hinzugefügt. Wenn du das nicht warst, gehe zu Einstellungen › Geräte & Dienste › Sonnounce, wähle Konfigurieren › Einstellungen und schalte Alle Telefone und Computer vergessen ein."
     }
   }
 }

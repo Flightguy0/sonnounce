@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce permet à l’app Sonnounce de votre téléphone ou de votre Mac d’envoyer des annonces vocales à vos enceintes Sonos via Home Assistant lorsque vous n’êtes pas chez vous. Il n’y a rien à remplir : les enceintes sont trouvées automatiquement.\n\nEnsuite, ouvrez l’app Sonnounce lorsque vous êtes chez vous, sur le même réseau Wi-Fi. Elle trouve ce Home Assistant d’elle-même et propose de l’ajouter. Aucune connexion n’est nécessaire."
+        "description": "Sonnounce permet à l’app Sonnounce de votre téléphone ou de votre Mac d’envoyer des annonces vocales à vos enceintes Sonos via Home Assistant lorsque vous n’êtes pas chez vous. Il n’y a rien à remplir : les enceintes sont trouvées automatiquement.\n\nEnsuite, choisissez Configurer puis Ajouter un téléphone ou un ordinateur. Puis, dans les 5 minutes, ouvrez l’app Sonnounce chez vous, sur le même réseau Wi-Fi. Elle trouve ce Home Assistant d’elle-même et propose de l’ajouter. Aucune connexion n’est nécessaire dans l’app."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Ajouter un téléphone ou un ordinateur",
+          "settings": "Réglages"
+        }
+      },
+      "settings": {
         "title": "Réglages de Sonnounce",
         "data": {
           "archive_enabled": "Enregistrer les annonces",
@@ -28,9 +35,24 @@
           "archive_enabled": "Chaque annonce envoyée depuis l’app est enregistrée dans Home Assistant jusqu’à ce que vous la téléchargiez depuis l’app Sonnounce sur votre téléphone ou votre Mac. Les annonces téléchargées sont supprimées de Home Assistant.",
           "archive_days": "0 signifie qu’elles sont conservées jusqu’à leur téléchargement.",
           "speaker_host": "Nécessaire uniquement si Home Assistant et les enceintes sont sur des réseaux séparés. Saisissez l’adresse IP de l’une des enceintes, par exemple 192.168.1.20.",
-          "reset_key": "Crée une nouvelle clé. Chaque téléphone et ordinateur doit ajouter à nouveau ce Home Assistant dans l’app Sonnounce, à la maison, sur le même réseau Wi-Fi. Utilisez cette option si vous perdez un téléphone."
+          "reset_key": "Crée une nouvelle clé. Chaque téléphone et ordinateur doit ensuite être ajouté à nouveau : choisissez Ajouter un téléphone ou un ordinateur sous Configurer, et ajoutez ce Home Assistant dans l’app Sonnounce, chez vous, sur le même réseau Wi-Fi. Utilisez cette option si vous perdez un téléphone."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "L’association est ouverte pendant 5 minutes. Ouvrez l’app Sonnounce chez vous, sur le même réseau Wi-Fi, et ajoutez ce Home Assistant. L’association se ferme dès qu’un téléphone ou un ordinateur a été ajouté.",
+      "not_ready": "Sonnounce ne fonctionne pas. Redémarrez Home Assistant et réessayez."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Un téléphone ou un ordinateur a essayé d’ajouter ce Home Assistant dans l’app Sonnounce, mais l’association n’est pas ouverte. Pour l’autoriser, allez dans Paramètres › Appareils et services › Sonnounce, choisissez Configurer puis Ajouter un téléphone ou un ordinateur, et réessayez dans l’app dans les 5 minutes."
+    },
+    "paired": {
+      "message": "Un téléphone ou un ordinateur a été ajouté dans l’app Sonnounce. Si ce n’était pas vous, allez dans Paramètres › Appareils et services › Sonnounce, choisissez Configurer › Réglages et activez Oublier tous les téléphones et ordinateurs."
     }
   }
 }

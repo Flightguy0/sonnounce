@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Sonnounce",
-        "description": "Sonnounce permite que la app Sonnounce de tu teléfono o Mac envíe avisos de voz a tus altavoces Sonos a través de Home Assistant cuando estás fuera de casa. No hay nada que completar: los altavoces se encuentran automáticamente.\n\nDespués, abre la app Sonnounce mientras estás en casa, en la misma red Wi-Fi. Encuentra este Home Assistant por sí sola y te ofrece agregarlo. No hace falta iniciar sesión."
+        "description": "Sonnounce permite que la app Sonnounce de tu teléfono o Mac envíe avisos de voz a tus altavoces Sonos a través de Home Assistant cuando estás fuera de casa. No hay nada que completar: los altavoces se encuentran automáticamente.\n\nDespués, elige Configurar y luego Agregar un teléfono o computadora. A continuación, en menos de 5 minutos, abre la app Sonnounce en casa, en la misma red Wi-Fi. Encuentra este Home Assistant por sí sola y te ofrece agregarlo. No hace falta iniciar sesión en la app."
       },
       "confirm": {
         "title": "Sonnounce",
@@ -17,6 +17,13 @@
   "options": {
     "step": {
       "init": {
+        "title": "Sonnounce",
+        "menu_options": {
+          "pair": "Agregar un teléfono o computadora",
+          "settings": "Configuración"
+        }
+      },
+      "settings": {
         "title": "Configuración de Sonnounce",
         "data": {
           "archive_enabled": "Guardar avisos",
@@ -28,9 +35,24 @@
           "archive_enabled": "Cada aviso enviado desde la app se guarda en Home Assistant hasta que lo descargas desde la app Sonnounce en tu teléfono o Mac. Los avisos descargados se eliminan de Home Assistant.",
           "archive_days": "0 significa que se conservan hasta que se descargan.",
           "speaker_host": "Solo es necesario si Home Assistant y los altavoces están en redes separadas. Escribe la dirección IP de uno de los altavoces, por ejemplo 192.168.1.20.",
-          "reset_key": "Crea una clave nueva. Cada teléfono y computadora tiene que volver a agregar este Home Assistant en la app Sonnounce, en casa y en la misma red Wi-Fi. Úsalo si pierdes un teléfono."
+          "reset_key": "Crea una clave nueva. Después hay que volver a agregar cada teléfono y computadora: elige Agregar un teléfono o computadora en Configurar y agrega este Home Assistant en la app Sonnounce, en casa y en la misma red Wi-Fi. Úsalo si pierdes un teléfono."
         }
       }
+    },
+    "abort": {
+      "pairing_open": "La vinculación está abierta durante 5 minutos. Abre la app Sonnounce en casa, en la misma red Wi-Fi, y agrega este Home Assistant. La vinculación se cierra en cuanto se agregue un teléfono o computadora.",
+      "not_ready": "Sonnounce no está funcionando. Reinicia Home Assistant y vuelve a intentarlo."
+    }
+  },
+  "exceptions": {
+    "notify_title": {
+      "message": "Sonnounce"
+    },
+    "pairing_closed": {
+      "message": "Un teléfono o computadora intentó agregar este Home Assistant en la app Sonnounce, pero la vinculación no está abierta. Para permitirlo, ve a Configuración › Dispositivos y servicios › Sonnounce, elige Configurar y luego Agregar un teléfono o computadora, y vuelve a intentarlo en la app en menos de 5 minutos."
+    },
+    "paired": {
+      "message": "Se agregó un teléfono o computadora en la app Sonnounce. Si no fuiste tú, ve a Configuración › Dispositivos y servicios › Sonnounce, elige Configurar › Configuración y activa Olvidar todos los teléfonos y computadoras."
     }
   }
 }
